@@ -26,13 +26,13 @@
                     <td>{{ libro.autor }}</td>
                     <td>{{ libro.apublicacion }}</td>
                     <td>{{ libro.editorial }}</td>
-                    <td> - </td>
+                    <td> <a href="{{ path('app_libro_eliminar', {'id':libro.id}) }}">  - </a></td>
                     <td> * </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
-    <p>Insertar libro</p>
+    <p><a href="{{ path('app_libro_nuevo') }}">Insertar nuevo libro</a></p>
 
 </body>
 </html>

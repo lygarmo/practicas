@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Libro;
+use App\Form\LibroType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -62,5 +64,29 @@ final class LibroController extends AbstractController{
             //convierte el objeto del formulario en una representación que Twig puede procesar y mostrar en la vista.
         ]);
     }
+
+
+    //la ruta acepta un parametro {id} que corresponde al id del libro
+    #[Route('/libro/{id}/eliminar', name: 'app_libro_eliminar')]
+    public function eliminar(int $id, EntityManagerInterface $entityManager): Response{
+        // Buscar el libro por su ID
+        // Utilizamos el repositorio de la entidad 'Libro' para buscar el libro con el ID que hemos recibido en la URL.
+        $libro = $entityManager->getRepository(Libro::class)->find($id);
+
+        //si el libro existe nada, sino existe lanza una excepcion 
+        if (!$libro) {
+            //excepcion
+            throw $this->createNotFoundException('El libro no existe.');
+        }
+
+        // Eliminar el libro
+        $entityManager->remove($libro);
+        // guardar cambios
+        $entityManager->flush();
+
+        // Redirigir de nuevo a la lista de libros
+        return $this->redirectToRoute('app_libro');
+    }
+
 
 }
