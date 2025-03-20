@@ -27,7 +27,7 @@
                     <td>{{ libro.apublicacion }}</td>
                     <td>{{ libro.editorial }}</td>
                     <td> <a href="{{ path('app_libro_eliminar', {'id':libro.id}) }}">  - </a></td>
-                    <td> * </td>
+                    <td> <a href="{{ path('app_libro_editar', {'id':libro.id}) }}"> * </a></td>
                 </tr>
             {% endfor %}
         </tbody>

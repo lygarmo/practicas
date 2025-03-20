@@ -88,5 +88,33 @@ final class LibroController extends AbstractController{
         return $this->redirectToRoute('app_libro');
     }
 
+    #[Route('/libro/{id}/editar', name: 'app_libro_editar')]
+    public function editar(int $id, Request $request, EntityManagerInterface $entityManager): Response{
+        $libro = $entityManager->getRepository(Libro::class)->find($id);
+
+        if (!$libro) {
+            throw $this->createNotFoundException('El libro no existe.');
+        }
+
+        $form = $this->createForm(LibroType::class, $libro);
+
+        // Procesar los datos del formulario
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Guardar los cambios en la base de datos
+            $entityManager->flush();
+
+            // Redirigir al listado de libros
+            return $this->redirectToRoute('app_libro');
+        }
+
+        // Renderizar(muestra y genera una representacion grafica) la vista con el formulario
+        return $this->render('libro/editar.html.twig', [
+            'form' => $form->createView(),
+        ]);
+
+    }
+
 
 }
