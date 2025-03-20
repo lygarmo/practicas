@@ -1,4 +1,4 @@
-#https://github.com/lygarmo/practicas Proyecto de Gestión de Libros con Symfony
+### Proyecto de Gestión de Libros con Symfony
 
 Este proyecto es una aplicación web desarrollada con Symfony, diseñada para gestionar una lista de libros. Utiliza una base de datos MySQL para almacenar la información de los libros, y permite realizar operaciones de CRUD (Crear, Leer, Actualizar, Eliminar) para administrar los datos de los libros. La aplicación fue desarrollada utilizando XAMPP y phpMyAdmin para la gestión de la base de datos.
 
