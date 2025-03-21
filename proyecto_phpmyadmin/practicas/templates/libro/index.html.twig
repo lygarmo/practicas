@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Libros</title>
+</head>
+<body>
+    <h1>Lista de Libros</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Año de publicacion</th>
+                <th>Editorial</th>
+                <th>Eliminar</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for libro in libros %}
+                <tr>
+                    <td>{{ libro.id }}</td>
+                    <td>{{ libro.titulo }}</td>
+                    <td>{{ libro.autor }}</td>
+                    <td>{{ libro.apublicacion }}</td>
+                    <td>{{ libro.editorial }}</td>
+                    <td> <a href="{{ path('app_libro_eliminar', {'id':libro.id}) }}">  - </a></td>
+                    <td> <a href="{{ path('app_libro_editar', {'id':libro.id}) }}"> * </a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p><a href="{{ path('app_libro_nuevo') }}">Insertar nuevo libro</a></p>
+
+</body>
+</html>

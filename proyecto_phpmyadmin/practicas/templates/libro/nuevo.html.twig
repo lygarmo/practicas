@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insertar Nuevo Libro</title>
+</head>
+<body>
+    <h1>Insertar Nuevo Libro</h1>
+
+    {# Si el formulario ha sido enviado y hay errores, los mostramos #}
+    {% if form is not empty %}
+        <form method="post">
+            {{ form_start(form) }}
+            {{ form_row(form.titulo) }}
+            {{ form_row(form.autor) }}
+            {{ form_row(form.a_publicacion) }}
+            {{ form_row(form.editorial) }}
+            {{ form_row(form.guardar) }}
+            {{ form_end(form) }}
+        </form>
+    {% endif %}
+
+    <p><a href="{{ path('app_libro') }}">Volver a la lista de libros</a></p>
+</body>
+</html>
