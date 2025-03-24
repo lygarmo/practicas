@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Libro</title>
+</head>
+<body>
+    <h1>Editar Libro</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.titulo) }}
+        {{ form_row(form.autor) }}
+        {{ form_row(form.a_publicacion) }}
+        {{ form_row(form.editorial) }}
+        {{ form_row(form.guardar) }}
+    {{ form_end(form) }}
+
+    <p><a href="{{ path('app_libro') }}">Volver a la lista de libros</a></p>
+
+</body>
+</html>
